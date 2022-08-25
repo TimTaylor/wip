@@ -1,0 +1,121 @@
+---
+title: "Archiving analysis"
+author: "Tim Taylor"
+date: 2022-09-07
+format:
+    revealjs
+---
+
+## Rough outline
+
+- About me
+- Caveats and disclaimers
+- Goals of archiving analysis
+- A simple abstraction of an analysis workflow
+- An example
+- Containers, source control and workflow management
+- Questions
+
+::: {.notes}
+- Talk will be relatively brief.
+- Goal is to stimulate discussion rather than dictate how things should be!
+:::
+
+## About me
+
+::: {.incremental}
+- 2021 - now : Infectious Disease Modeller, UKHSA.
+- 2020 - 2021: Research Fellow, LSHTM.
+- 2015 - 2019: Operational Research Analyst, DfT.
+- 2010 - 2013: PhD, Mathematics/Informatics.
+:::
+
+::: {.notes}
+- Title versus reality is a little different.
+:::
+
+## About me (in practice)
+
+::: {.incremental}
+- I work as a [Research Software Engineer](https://society-rse.org/what-is-an-rse/)
+(RSE).
+- In <span style="color:red">collaboration</span> with
+<span style="color:red">domain experts</span> I write software to help improve
+the analysis that they can deliver.
+:::
+
+::: {.notes}
+- Link goes to a description of what an RSE is.
+- Stepping out of my lane with this talk.
+:::
+
+## Some caveats on what follows
+    
+::: {.incremental}
+- All analyses are different and no single solution will work for everything.
+- Example used is deliberately simplistic to illustrate the abstractions.
+- Data access issues are ignored.
+- Variations on this approach likely already adopted by teams within UKHSA.
+- There are no magic answers!
+:::
+
+---
+
+## What do we want to achieve?
+We want ensure that it is easy for ourselves and others to:
+
+::: {.incremental}
+- <span style="color:red">build upon</span> the methods used;
+- <span style="color:red">reproduce</span> and <span style="color:red">validate</span> our results;
+- <span style="color:red">update</span> our output based on new input; and
+- <span style="color:red">correct</span> any mistakes we have made.
+:::
+
+::: {.notes}
+- sure there are many more points...
+:::
+
+## A (simple) abstraction 
+
+```{mermaid}
+flowchart LR
+  A[Data] --> C{Run}
+  B[Analysis code] --> C{Run}
+  C{Run} --> D(Results)
+  D[Results] --> F{Build}
+  E[Report text] --> F{Build}
+  F{Build} --> G(Report)
+  style C fill:#b3f5a9
+  style F fill:#b3f5a9
+```
+
+::: {.notes}
+Questions
+
+- How to orchestrate the flow?
+- How to keep track of changes?
+- How to generate the different outputs?
+- How to store all of the different components?
+- replace Run/Build with container
+
+:::
+
+# Example
+
+A [mock technical briefing](https://timtaylor.github.io/demo-monkeypox/) for monkeypox.
+
+## Implementation
+
+- Coordinated via [Make](https://www.gnu.org/software/make/).
+- [Containers](https://en.wikipedia.org/wiki/OS-level_virtualization), managed
+  via [podman](https://docs.podman.io/en/latest/), are used for the analysis
+  runtime and generation of report output.
+- [Git](https://git-scm.com/) used for version control.
+- [Container](https://github.com/TimTaylor/demo-monkeypox/pkgs/container/monkeypox/35977654?tag=latest),
+  [source](https://github.com/TimTaylor/demo-monkeypox) and
+  [output](https://timtaylor.github.io/demo-monkeypox/) all hosted using GitHub
+  services.
+
+::: {.notes}
+TODO - talk about make, containers and git
+:::
