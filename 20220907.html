@@ -358,14 +358,12 @@
 </section>
 <section id="about-me" class="slide level2">
 <h2>About me</h2>
-<div>
 <ul>
-<li class="fragment">2021 - now : Infectious Disease Modeller, UKHSA.</li>
-<li class="fragment">2020 - 2021: Research Fellow, LSHTM.</li>
-<li class="fragment">2015 - 2019: Operational Research Analyst, DfT.</li>
-<li class="fragment">2010 - 2013: PhD, Mathematics/Informatics.</li>
+<li>2021 - now : Infectious Disease Modeller, UKHSA.</li>
+<li>2020 - 2021: Research Fellow, LSHTM.</li>
+<li>2015 - 2019: Operational Research Analyst, DfT.</li>
+<li>2010 - 2013: PhD, Mathematics/Informatics.</li>
 </ul>
-</div>
 <aside class="notes">
 <ul>
 <li>Title versus reality is a little different.</li>
@@ -386,7 +384,7 @@
 <h2>About me (in practice)</h2>
 <div>
 <ul>
-<li class="fragment">I work as a <a href="https://society-rse.org/what-is-an-rse/">Research Software Engineer</a> (RSE).</li>
+<li class="fragment">work as a <a href="https://society-rse.org/what-is-an-rse/">Research Software Engineer</a> (RSE).</li>
 <li class="fragment">In <span style="color:red">collaboration</span> with <span style="color:red">domain experts</span> I write software to help improve the analysis that they can deliver.</li>
 </ul>
 </div>
@@ -411,13 +409,30 @@
 <h2>Some caveats on what follows</h2>
 <div>
 <ul>
-<li class="fragment">All analyses are different and no single solution will work for everything.</li>
-<li class="fragment">Example used is deliberately simplistic to illustrate the abstractions.</li>
+<li class="fragment">All analyses are different.</li>
+<li class="fragment">Simplistic example.</li>
 <li class="fragment">Data access issues are ignored.</li>
-<li class="fragment">Variations on this approach likely already adopted by teams within UKHSA.</li>
+<li class="fragment">Nothing new to UKHSA.</li>
 <li class="fragment">There are no magic answers!</li>
 </ul>
 </div>
+<aside class="notes">
+<ul>
+<li>No single solution will work for everything.</li>
+<li>Example to illustrate abstractions</li>
+<li>Variations on this approach likely already adopted by teams within UKHSA.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="what-do-we-want-to-achieve" class="slide level2">
 <h2>What do we want to achieve?</h2>
@@ -494,17 +509,10 @@
 <section id="example" class="title-slide slide level1 center">
 <h1>Example</h1>
 <p>A <a href="https://timtaylor.github.io/demo-monkeypox/">mock technical briefing</a> for monkeypox.</p>
-</section>
-<section id="implementation" class="slide level2">
-<h2>Implementation</h2>
-<ul>
-<li>Coordinated via <a href="https://www.gnu.org/software/make/">Make</a>.</li>
-<li><a href="https://en.wikipedia.org/wiki/OS-level_virtualization">Containers</a>, managed via <a href="https://docs.podman.io/en/latest/">podman</a>, are used for the analysis runtime and generation of report output.</li>
-<li><a href="https://git-scm.com/">Git</a> used for version control.</li>
-<li><a href="https://github.com/TimTaylor/demo-monkeypox/pkgs/container/monkeypox/35977654?tag=latest">Container</a>, <a href="https://github.com/TimTaylor/demo-monkeypox">source</a> and <a href="https://timtaylor.github.io/demo-monkeypox/">output</a> all hosted using GitHub services.</li>
-</ul>
 <aside class="notes">
-<p>TODO - talk about make, containers and git</p>
+<ul>
+<li>show report and click through to repository.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -516,10 +524,44 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="implementation" class="slide level2">
+<h2>Implementation</h2>
+<ul>
+<li>Coordinated via <a href="https://www.gnu.org/software/make/">Make</a>.</li>
+<li><a href="https://en.wikipedia.org/wiki/OS-level_virtualization">Containers</a>, managed via <a href="https://docs.podman.io/en/latest/">podman</a>, are used for the analysis runtime and generation of report output.</li>
+<li><a href="https://git-scm.com/">Git</a> used for version control.</li>
+<li><a href="https://github.com/TimTaylor/demo-monkeypox/pkgs/container/monkeypox/35977654?tag=latest">Container</a>, <a href="https://github.com/TimTaylor/demo-monkeypox">source</a> and <a href="https://timtaylor.github.io/demo-monkeypox/">output</a> all hosted using GitHub services.</li>
+</ul>
+<aside class="notes">
+<p>TODO - talk about make, containers and git - clone repo - explain containers, a lightweight (relative to full vm) way to provision a runtime for our code. mention podman / docker and singularity - pull container (explain this depends on your connection so may be slow etc) - Make coordinates the different stages. - Show makefile and explain target, dependencies - run <code>make report</code> on the current repo. - show benefit of version control - checkout v1.0 and rerun <code>make report</code> - go back to main</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="useful-links" class="slide level2">
+<h2>Useful links</h2>
+<ul>
+<li><a href="https://kbroman.org/minimal_make/">minimal make</a></li>
+<li><a href="https://rocker-project.org/">Rocker Project</a></li>
+<li><a href="https://happygitwithr.com/">Happy Git</a></li>
+<li><a href="https://journal.r-project.org/articles/RJ-2021-111/">A data analytic language</a></li>
+</ul>
+</section></section>
+<section id="questions" class="title-slide slide level1 center">
+<h1>Questions</h1>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
